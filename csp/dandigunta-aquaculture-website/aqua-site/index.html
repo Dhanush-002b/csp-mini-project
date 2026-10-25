@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aquaculture Practices, Problems and Solutions – Dandigunta, Nellore</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <nav>
+    <strong>Dandigunta Aquaculture Study</strong>
+    <a href="#study">Study area</a>
+    <a href="#practices">Practices</a>
+    <a href="#problems">Problems and solutions</a>
+    <a href="#records">Pond records</a>
+    <a href="#photos">Field photos</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>A Study of Aquaculture Practices, Problems and Solutions</h1>
+    <p class="lead">Group field study of Dandigunta Village, Nellore District, Andhra Pradesh. Nellore is one of the main coastal districts for farmed shrimp and fish in India.</p>
+    <dl class="meta">
+      <div><dt>25JNA33502</dt><dd>Dhornagambala Dhanush</dd></div>
+      <div><dt>24JNA33142</dt><dd>Putta Madhan Mohan</dd></div>
+      <div><dt>24JNA33141</dt><dd>Purini Chakri</dd></div>
+      <div><dt>24JNA33145</dt><dd>Ravilla Vishnu Vardhan</dd></div>
+      <div><dt>24JNA33125</dt><dd>Parisigani Harsha Vadhan</dd></div>
+      <div><dt>Branch</dt><dd>CSE AIML</dd></div>
+      <div><dt>Faculty guide</dt><dd>Ms. Sowjanya</dd></div>
+    </dl>
+  </div>
+</section>
+
+<main class="wrap">
+  <section id="study">
+    <h2>Study area and method</h2>
+    <div class="split">
+      <figure class="photo"><img src="images/gps_photo.jpg" alt="Team members with a farmer beside a pond, GPS camera overlay showing Dandigunta"><figcaption>Field visit, Dandigunta, 17 Oct 2026, 9:23 AM (14.633429° N, 80.112374° E).</figcaption></figure>
+      <div>
+        <p>Dandigunta is a village in Nellore District on the Andhra Pradesh coast. The group visited ponds in the village, observed how they are managed, and interviewed farmers about stocking, feed, disease and selling price.</p>
+        <p>Readings and notes from the visit can be entered in the pond records below and exported as CSV.</p>
+        <figure class="photo"><img src="images/farmer_interview_group.jpg" alt="Team members with a local farmer near the water body" loading="lazy"><figcaption>Team members with a local farmer near the water body.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="practices">
+    <h2>Aquaculture practices</h2>
+    <p>The usual cycle on a farm, from empty pond to harvest. Select a stage to read what is done and why.</p>
+    <div class="stages" id="stages" role="tablist"></div>
+    <article class="stage-body" id="stageBody" aria-live="polite"></article>
+  </section>
+
+  <section id="problems">
+    <h2>Common problems and solutions</h2>
+    <figure class="photo wide-photo"><img src="images/farmer_interview.jpg" alt="Interviewing a farmer" loading="lazy"><figcaption>Problems were collected through farmer interviews.</figcaption></figure>
+    <div class="filters" id="filters"></div>
+    <div class="table-scroll">
+      <table class="plain">
+        <thead><tr><th>Problem</th><th>What farmers see</th><th>Solution</th></tr></thead>
+        <tbody id="problemRows"></tbody>
+      </table>
+    </div>
+    <p class="note">Content is a general study summary. Confirm village-level details with farmer interviews and local fisheries officers before submitting.</p>
+  </section>
+
+  <section id="records">
+    <h2>Pond observation records</h2>
+    <p>Enter readings from the field. Records stay in this browser and can be exported as a CSV file. Values outside the indicative range for farmed shrimp are marked.</p>
+    <form id="recForm" class="grid">
+      <label>Date<input type="date" name="date" required></label>
+      <label>Pond ID<input name="pond" placeholder="e.g. P1" required></label>
+      <label>Species
+        <select name="species"><option>Vannamei shrimp</option><option>Black tiger shrimp</option><option>Rohu</option><option>Catla</option><option>Pangasius</option><option>Other</option></select>
+      </label>
+      <label>Days of culture<input type="number" name="doc" min="0" step="1"></label>
+      <label>pH<input type="number" name="ph" min="0" max="14" step="0.1"></label>
+      <label>Dissolved oxygen (mg/L)<input type="number" name="do" min="0" step="0.1"></label>
+      <label>Temperature (°C)<input type="number" name="temp" step="0.1"></label>
+      <label>Salinity (ppt)<input type="number" name="sal" min="0" step="0.1"></label>
+      <label>Ammonia (mg/L)<input type="number" name="nh3" min="0" step="0.01"></label>
+      <label>Feed given (kg)<input type="number" name="feed" min="0" step="0.1"></label>
+      <label>Mortality (count)<input type="number" name="mort" min="0" step="1"></label>
+      <label class="wide">Remarks<input name="remarks" placeholder="Colour of water, feed response, disease signs"></label>
+      <div class="actions wide">
+        <button type="submit">Save record</button>
+        <button type="button" class="ghost" id="sample">Fill sample values</button>
+        <button type="button" class="ghost" id="exportBtn">Export CSV</button>
+        <button type="button" class="danger" id="clearBtn">Delete all</button>
+      </div>
+    </form>
+    <p id="status" class="status" role="status"></p>
+    <div class="table-scroll">
+      <table class="plain" id="recTable">
+        <thead><tr><th>Date</th><th>Pond</th><th>Species</th><th>DOC</th><th>pH</th><th>DO</th><th>Temp</th><th>Sal.</th><th>NH₃</th><th>Feed</th><th>Mort.</th><th>Remarks</th><th></th></tr></thead>
+        <tbody id="recRows"></tbody>
+      </table>
+    </div>
+    <p id="empty" class="note">No records yet. Save your first observation above.</p>
+  </section>
+
+  <section id="photos">
+    <h2>Field visit photos</h2>
+    <p>Photographs from the team's visit to Dandigunta. Select a photo to open it full size.</p>
+    <div class="gallery">
+    <figure><a href="images/gps_photo.jpg"><img src="images/gps_photo.jpg" alt="Team members with a farmer at the pond. GPS camera: Dandigunta, 17 Oct 2026, 9:23 AM (14.633429° N, 80.112374° E)." loading="lazy"></a><figcaption>Figure 1. Team members with a farmer at the pond. GPS camera: Dandigunta, 17 Oct 2026, 9:23 AM (14.633429° N, 80.112374° E).</figcaption></figure>
+    <figure><a href="images/pond_bund_walk.jpg"><img src="images/pond_bund_walk.jpg" alt="Walking along the pond bund during the field visit." loading="lazy"></a><figcaption>Figure 2. Walking along the pond bund during the field visit.</figcaption></figure>
+    <figure><a href="images/farmer_interview_group.jpg"><img src="images/farmer_interview_group.jpg" alt="Team members with a local farmer near the water body." loading="lazy"></a><figcaption>Figure 3. Team members with a local farmer near the water body.</figcaption></figure>
+    <figure><a href="images/pond_aerators_1.jpg"><img src="images/pond_aerators_1.jpg" alt="Team at a culture pond with aerators running." loading="lazy"></a><figcaption>Figure 4. Team at a culture pond with aerators running.</figcaption></figure>
+    <figure><a href="images/farmer_interview.jpg"><img src="images/farmer_interview.jpg" alt="Interviewing a farmer about stocking, feed, disease and price." loading="lazy"></a><figcaption>Figure 5. Interviewing a farmer about stocking, feed, disease and price.</figcaption></figure>
+    <figure><a href="images/farmer_talk_rotated.jpg"><img src="images/farmer_talk_rotated.jpg" alt="Farmer explaining pond management." loading="lazy"></a><figcaption>Figure 6. Farmer explaining pond management.</figcaption></figure>
+    <figure><a href="images/pond_aerators_3.jpg"><img src="images/pond_aerators_3.jpg" alt="Pond with aerators in operation." loading="lazy"></a><figcaption>Figure 7. Pond with aerators in operation.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About this project</h2>
+    <p>This website supports the group project report <em>A Study of Aquaculture Practices, Problems and Solutions</em>, prepared by Dhornagambala Dhanush (25JNA33502), Putta Madhan Mohan (24JNA33142), Purini Chakri (24JNA33141), Ravilla Vishnu Vardhan (24JNA33145), Parisigani Harsha Vadhan (24JNA33125), CSE AIML, under the guidance of Ms. Sowjanya. Study area: Dandigunta Village, Nellore District, Andhra Pradesh.</p>
+  </section>
+</main>
+<footer>© 2026 Group project, CSE AIML · Guide: Ms. Sowjanya</footer>
+<script src="script.js"></script>
+</body>
+</html>
